@@ -1,0 +1,11 @@
+<h3><%=@user.username %></h3>
+
+
+<% if @user.image %>
+	<div>
+		<h2><%=This are are all your moativators so far %></h2>
+		<% @user.image do |photo|%>
+			<%= %>
+		<% end %>
+	</div>
+<% end %>
