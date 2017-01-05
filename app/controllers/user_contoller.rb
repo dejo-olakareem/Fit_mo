@@ -1,6 +1,6 @@
 get '/users' do
 
-  # @users = User.all #define instance variable for view
+  @users = User.all #define instance variable for view
 
   erb :"users/index.html" #show all users view (index)
 
@@ -10,7 +10,7 @@ end
 
 get '/users/new' do
 
-  erb :'users/new' #show new users view
+  erb :"users/new.html" #show new users view
 
 end
 
@@ -24,7 +24,7 @@ post '/users' do
   if @user.save #saves new user or returns false if unsuccessful
     redirect '/users' #redirect back to users index page
   else
-    erb :'users/new' # show new users view again(potentially displaying errors)
+    erb :"users/new.html" # show new users view again(potentially displaying errors)
   end
 
 end
