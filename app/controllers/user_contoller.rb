@@ -22,7 +22,7 @@ post '/users' do
   @user = User.new(params[:user]) #create new user
 
   if @user.save #saves new user or returns false if unsuccessful
-    redirect '/users' #redirect back to users index page
+    redirect "/users/#{@user.id}" #redirect back to users index page
   else
     erb :"users/new.html" # show new users view again(potentially displaying errors)
   end
@@ -37,7 +37,7 @@ get '/users/:id' do
 
   @user = User.find(params[:id]) #define instance variable for view
 
-  erb :'users/show' #show single user view
+  erb :"users/show.html" #show single user view
 
 end
 
@@ -48,7 +48,7 @@ get '/users/:id/edit' do
   #get params from url
   @user = User.find(params[:id]) #define intstance variable for view
 
-  erb :'users/edit' #show edit user view
+  erb :"users/edit.html" #show edit user view
 
 end
 
@@ -61,9 +61,9 @@ put '/users/:id' do
   @user.assign_attributes(params[:user]) #assign new attributes
 
   if @user.save #saves new user or returns false if unsuccessful
-    redirect '/users' #redirect back to users index page
+    redirect "/users/#{@user.id}" #redirect back to users index page
   else
-    erb :'users/edit' #show edit user view again(potentially displaying errors)
+    erb :"users/edit.html" #show edit user view again(potentially displaying errors)
   end
 
 end

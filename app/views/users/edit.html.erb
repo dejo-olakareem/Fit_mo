@@ -1,0 +1,32 @@
+<div class ="form">
+  <form class="sub_form" method="post" action="/users/<%=@user.id%>">
+  <input type="hidden" name="_method" value ="put">
+    <h1>Update Your profile</h1>
+
+    <div class="field">
+      <label for="user_name">Create a user name</label>
+      <input type="text" name="user[username]" id="name" placeholder="<%=@user.username%>" />
+    </div>
+
+    <div class="field">
+      <label for="user_email">Email</label>
+      <input type="text" name="user[email]" id="email" placeholder="<%=@user.email%>" />
+    </div>
+
+    <div class="field">
+      <label for="user_password">Password</label>
+      <input type="password" name="user[password]" id="password" />
+    </div>
+
+    <div class="field">
+      <input class="btn btn-primary btn-block btn-large" type="submit" value="Update your profile"/>
+    </div>
+  </form>
+</div>
+
+<div>
+  <form action="/users/<%=@user.id %>" method="post">
+    <input type="hidden" name="_method" value="delete">
+    <input type="submit" value="delete">
+  </form>
+</div>
