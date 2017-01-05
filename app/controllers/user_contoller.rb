@@ -22,7 +22,7 @@ post '/users' do
   @user = User.new(params[:user]) #create new user
 
   if @user.save #saves new user or returns false if unsuccessful
-    redirect '/users/#{user.id}' #redirect back to users index page
+    redirect "/users/#{@user.id}" #redirect back to users index page
   else
     erb :"users/new.html" # show new users view again(potentially displaying errors)
   end
@@ -61,7 +61,7 @@ put '/users/:id' do
   @user.assign_attributes(params[:user]) #assign new attributes
 
   if @user.save #saves new user or returns false if unsuccessful
-    redirect '/users/#{user.id}' #redirect back to users index page
+    redirect "/users/#{@user.id}" #redirect back to users index page
   else
     erb :"users/edit.html" #show edit user view again(potentially displaying errors)
   end
