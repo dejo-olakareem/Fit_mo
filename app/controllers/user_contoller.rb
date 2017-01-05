@@ -1,8 +1,8 @@
 get '/users' do
 
-  @users = User.all #define instance variable for view
+  # @users = User.all #define instance variable for view
 
-  erb :'users/index' #show all users view (index)
+  erb :"users/index.html" #show all users view (index)
 
 end
 
