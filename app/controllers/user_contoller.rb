@@ -36,10 +36,12 @@ get '/users/:id' do
 
   #gets params from url
 
-  @user = User.find(params[:id]) #define instance variable for view
-
-  erb :"users/show.html" #show single user view
-
+  if params[:id].to_i == current_user.id
+    @user = User.find(params[:id]) #define instance variable for view
+    erb :"users/show.html" #show single user view
+  else
+    redirect "users/#{current_user.id}"
+  end
 end
 
 
