@@ -18,8 +18,4 @@ helpers do
 		session.clear
 	end
 
-
-
-
-
 end
