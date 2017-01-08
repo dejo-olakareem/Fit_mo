@@ -2,6 +2,10 @@ class User < ActiveRecord::Base
   # Remember to create a migration!
   has_many :images
 
+  validates :username, presence: true, uniqueness:true
+  validates :email, presence: true
+  validates :password_hash, presence: true
+
   # users.password_hash in the database is a :string
   include BCrypt
 
@@ -13,15 +17,6 @@ class User < ActiveRecord::Base
   	@password = Password.create(new_password)
   	self.password_hash = @password
   end
-
-  # def login
-  # 	@user = User.find_by_email(params[:email])
-  # 	if @user.password == params[:password]
-  # 		give_token
-  # 	else
-  # 		redirect_to home_url
-  # 	end
-  # end
 
 
 end

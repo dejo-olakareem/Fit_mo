@@ -22,6 +22,7 @@ post '/users' do
   @user = User.new(params[:user]) #create new user
 
   if @user.save #saves new user or returns false if unsuccessful
+    login(@user)
     redirect "/users/#{@user.id}" #redirect back to users index page
   else
     erb :"users/new.html" # show new users view again(potentially displaying errors)
@@ -35,10 +36,12 @@ get '/users/:id' do
 
   #gets params from url
 
-  @user = User.find(params[:id]) #define instance variable for view
-
-  erb :"users/show.html" #show single user view
-
+  if params[:id].to_i == current_user.id
+    @user = User.find(params[:id]) #define instance variable for view
+    erb :"users/show.html" #show single user view
+  else
+    redirect "users/#{current_user.id}"
+  end
 end
 
 
