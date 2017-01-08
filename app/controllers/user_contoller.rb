@@ -22,6 +22,7 @@ post '/users' do
   @user = User.new(params[:user]) #create new user
 
   if @user.save #saves new user or returns false if unsuccessful
+    login(@user)
     redirect "/users/#{@user.id}" #redirect back to users index page
   else
     erb :"users/new.html" # show new users view again(potentially displaying errors)
