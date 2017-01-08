@@ -2,8 +2,8 @@ get "/login" do
 	erb :"sessions/new.html"
 end
 
-post "/sessions"
-	@user = User.find_by(full_name: params[:full_name])
+post "/sessions" do 
+	@user = User.find_by(username: params[:username])
 	if @user 
 		if @user.password == params[:password]
 			login(@user)
@@ -14,7 +14,6 @@ post "/sessions"
 		end
 	else 
 		@error = "Invalid username or password"
-		p @error
 		erb :"/sessions/new.html"
 	end
 end   
